@@ -8,6 +8,7 @@ import 'package:music_player/common/widgets/button/basic_app_button.dart';
 import 'package:music_player/core/assets/app_images.dart';
 import 'package:music_player/core/assets/app_vectors.dart';
 import 'package:music_player/core/configs/theme/app_colors.dart';
+import 'package:music_player/presentation/auth/pages/login_or_register.dart';
 import 'package:music_player/presentation/choose_mode/bloc/theme_cubit.dart';
 
 class ChooseModePage extends StatelessWidget {
@@ -135,7 +136,7 @@ class ChooseModePage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  const ChooseModePage()));
+                                  const LoginOrRegister()));
                     },
                     title: "Continue")
               ],
