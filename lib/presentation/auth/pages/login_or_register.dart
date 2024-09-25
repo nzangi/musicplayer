@@ -5,6 +5,8 @@ import 'package:music_player/common/widgets/button/basic_app_button.dart';
 import 'package:music_player/core/assets/app_images.dart';
 import 'package:music_player/core/assets/app_vectors.dart';
 import 'package:music_player/common/widgets/appbar/my_app_bar.dart';
+import 'package:music_player/presentation/auth/pages/login.dart';
+import 'package:music_player/presentation/auth/pages/register.dart';
 
 class LoginOrRegister extends StatelessWidget {
   const LoginOrRegister({super.key});
@@ -59,21 +61,36 @@ class LoginOrRegister extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                            child:
-                                AppButton(onPressed: () {}, title: "Register")),
-
-                        const SizedBox(width: 20,),
-
+                            child: AppButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              RegisterPage()));
+                                },
+                                title: "Register")),
+                        const SizedBox(
+                          width: 20,
+                        ),
                         Expanded(
                           flex: 1,
                           child: TextButton(
-                              onPressed: () {},
-                              child:  Text(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            LoginPage()));
+                              },
+                              child: Text(
                                 'Login',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
-                                    color: context.isDarkMode ? Colors.white : Colors.black),
+                                    color: context.isDarkMode
+                                        ? Colors.white
+                                        : Colors.black),
                               )),
                         )
                       ],

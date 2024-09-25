@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "239343442849",
+    "project_id": "musicplayer-ddf32",
+    "storage_bucket": "musicplayer-ddf32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239343442849:android:c15b4410a1aaa49f8149e0",
+        "android_client_info": {
+          "package_name": "com.nzangi.music_player"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA06l58Z2p0WXGpHUCStIyiOnIrKG1uzOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
