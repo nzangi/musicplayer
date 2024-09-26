@@ -7,8 +7,8 @@ import 'package:music_player/core/assets/app_vectors.dart';
 import 'package:music_player/data/models/auth/signin_user_request.dart';
 import 'package:music_player/domain/usecase/auth/signin.dart';
 import 'package:music_player/presentation/auth/pages/register.dart';
+import 'package:music_player/presentation/home/pages/home.dart';
 import 'package:music_player/service_locator.dart';
-import 'package:music_player/presentation/root/pages/root.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -37,8 +37,11 @@ class LoginPage extends StatelessWidget {
             AppButton(onPressed: () async {
               var register = await serviceLocator<SignInUseCase>().call(
                   params: SignInUserRequest(
-                      email: _email.text.toString(),
-                      password: _password.text.toString(),
+                      email: 'muoki@gmail.com',
+                      password: '12345678'
+
+                      // email: _email.text.toString(),
+                      // password: _password.text.toString(),
                      ));
               register.fold((l) {
                 var snackBar = SnackBar(content: Text(l));
@@ -48,7 +51,7 @@ class LoginPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (BuildContext context) =>
-                        const RootPage()),
+                        const HomePage()),
                         (route) => false);
               });
             }, title: 'Login')
@@ -57,6 +60,7 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+
   Widget _registerText(){
     return const Text(
       'Login',

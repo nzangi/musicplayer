@@ -9,12 +9,14 @@ import 'package:music_player/domain/usecase/auth/signup.dart';
 import 'package:music_player/presentation/auth/pages/login.dart';
 import 'package:music_player/service_locator.dart';
 
+
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
   final TextEditingController _fullName = TextEditingController();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirmPassword = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +71,7 @@ class RegisterPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  RegisterPage()),
+                                  LoginPage()),
                           (route) => false);
                     });
                   },

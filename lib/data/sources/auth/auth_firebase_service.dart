@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:music_player/data/models/auth/create_user_request.dart';
@@ -30,7 +31,12 @@ class AuthFirebaseServiceImplementation extends AuthFirebaseService{
   @override
   Future<Either> signUp(CreateUserRequest request) async {
     try{
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: request.email, password: request.password);
+      var data  = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: request.email, password: request.password);
+      FirebaseFirestore.instance.collection('Users').add({
+        'name': request.fullName,
+        'email': data.user?.email
+      });
+
       return  const Right("Registration was successful");
     }on FirebaseAuthException catch(error){
       String message = '';
