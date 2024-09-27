@@ -8,6 +8,8 @@ import 'package:music_player/common/widgets/appbar/my_app_bar.dart';
 import 'package:music_player/presentation/auth/pages/login.dart';
 import 'package:music_player/presentation/auth/pages/register.dart';
 
+
+
 class LoginOrRegister extends StatelessWidget {
   const LoginOrRegister({super.key});
 

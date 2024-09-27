@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:music_player/common/helpers/is_dark_mode.dart';
-import 'package:music_player/core/assets/app_images.dart';
 import 'package:music_player/core/configs/theme/app_colors.dart';
-
-import '../../../common/widgets/appbar/my_app_bar.dart';
-import '../../../core/assets/app_vectors.dart';
+import 'package:music_player/presentation/home/widgets/new_songs.dart';
+import 'package:music_player/common/widgets/appbar/my_app_bar.dart';
+import 'package:music_player/core/assets/app_vectors.dart';
+import 'package:music_player/core/assets/app_images.dart';
+import 'package:music_player/presentation/home/widgets/play_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -36,8 +37,24 @@ class _HomePageState extends State<HomePage>
       ),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [_homeTopCard(), _tabs()],
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _homeTopCard(),
+              _tabs(),
+              SizedBox(
+                height: 260,
+                child: TabBarView(controller: _tabController, children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 30.0),
+                    child: NewSongs(),
+                  ),
+                  Container(),
+                  Container(),
+                  Container(),
+                ]),
+              ),
+              const PlayList(),
+            ],
         ),
       ),
     );

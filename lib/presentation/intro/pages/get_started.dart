@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:music_player/common/widgets/button/basic_app_button.dart';
-import 'package:music_player/core/assets/app_images.dart';
-import 'package:music_player/core/assets/app_vectors.dart';
 import 'package:music_player/presentation/choose_mode/pages/choose_mode.dart';
 import 'package:music_player/core/configs/theme/app_colors.dart';
+import 'package:music_player/core/assets/app_images.dart';
+import 'package:music_player/core/assets/app_vectors.dart';
 
 class GetStartedPage extends StatelessWidget {
   const GetStartedPage({super.key});

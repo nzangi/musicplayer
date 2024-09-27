@@ -7,6 +7,7 @@ import 'package:music_player/domain/repository/song/song.dart';
 import 'package:music_player/domain/usecase/auth/signin.dart';
 import 'package:music_player/domain/usecase/auth/signup.dart';
 import 'package:music_player/domain/usecase/song/get_new_songs.dart';
+import 'package:music_player/domain/usecase/song/get_play_list.dart';
 
 import 'data/sources/song/song_firebase_service.dart';
 
@@ -27,7 +28,7 @@ Future<void> initializeDependencies() async {
   );
 
   serviceLocator.registerSingleton<SongsRepository>(
-      SongRepositoryImplementation()
+      SongsRepositoryImplementation()
   );
 
   serviceLocator.registerSingleton<SignUpUseCase>(
@@ -42,4 +43,7 @@ Future<void> initializeDependencies() async {
       GetNewSongsUseCase()
   );
 
+  serviceLocator.registerSingleton<GetPlayListUseCase>(
+      GetPlayListUseCase()
+  );
 }

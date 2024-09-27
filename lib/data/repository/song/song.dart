@@ -4,9 +4,15 @@ import 'package:music_player/domain/repository/song/song.dart';
 import 'package:music_player/service_locator.dart';
 
 
-class SongRepositoryImplementation extends SongsRepository{
+class SongsRepositoryImplementation extends SongsRepository{
   @override
   Future<Either> getNewSongs({params}) async {
     return await serviceLocator<SongFirebaseService>().getNewSongs();
+  }
+
+  @override
+  Future<Either> getNewPlayList() async{
+    return await serviceLocator<SongFirebaseService>().getNewPlayList();
+
   }
 }
