@@ -7,6 +7,7 @@ import 'package:music_player/common/widgets/appbar/my_app_bar.dart';
 import 'package:music_player/core/assets/app_vectors.dart';
 import 'package:music_player/core/assets/app_images.dart';
 import 'package:music_player/presentation/home/widgets/play_list.dart';
+import 'package:music_player/presentation/profile/pages/profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,6 +30,9 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: MyAppBar(
         hideBack: true,
+        action: IconButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> const ProfilePage()));
+        }, icon: const Icon(Icons.person)),
         title: SvgPicture.asset(
           AppVectors.logo,
           height: 40,

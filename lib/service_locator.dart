@@ -6,8 +6,10 @@ import 'package:music_player/domain/repository/auth/auth.dart';
 import 'package:music_player/domain/repository/song/song.dart';
 import 'package:music_player/domain/usecase/auth/signin.dart';
 import 'package:music_player/domain/usecase/auth/signup.dart';
+import 'package:music_player/domain/usecase/song/add_or_remove_favourite.dart';
 import 'package:music_player/domain/usecase/song/get_new_songs.dart';
 import 'package:music_player/domain/usecase/song/get_play_list.dart';
+import 'package:music_player/domain/usecase/song/is_favourite_song.dart';
 
 import 'data/sources/song/song_firebase_service.dart';
 
@@ -46,4 +48,13 @@ Future<void> initializeDependencies() async {
   serviceLocator.registerSingleton<GetPlayListUseCase>(
       GetPlayListUseCase()
   );
+
+  serviceLocator.registerSingleton<IsFavouriteSongUseCase>(
+      IsFavouriteSongUseCase()
+  );
+
+  serviceLocator.registerSingleton<AddOrRemoveFavouriteSongUseCase>(
+      AddOrRemoveFavouriteSongUseCase()
+  );
+
 }

@@ -19,4 +19,10 @@ class AuthRepositoryImplementation extends AuthRepository{
     return await serviceLocator<AuthFirebaseService>().signUp(request);
   }
 
+  @override
+  Future<Either> getUser() {
+    // TODO: implement getUser
+    throw UnimplementedError();
+  }
+
 }

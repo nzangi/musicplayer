@@ -5,6 +5,7 @@ import 'package:music_player/domain/entities/song/song.dart';
 import 'package:music_player/presentation/song_player/bloc/song_player_cubit.dart';
 import 'package:music_player/presentation/song_player/bloc/song_player_state.dart';
 
+import '../../../common/widgets/favourite button/my_favourite_button.dart';
 import '../../../core/configs/contants/app_urls.dart';
 import '../../../core/configs/theme/app_colors.dart';
 
@@ -51,7 +52,6 @@ class SongPlayerPage extends StatelessWidget {
     String title = Uri.encodeComponent(songEntity.title);
     String songUrl =
         '${AppURLs.songFirebaseStorage}$artist%20-%20$title.mp3?alt=media';
-    print(songUrl);
     return songUrl;
   }
 
@@ -60,17 +60,10 @@ class SongPlayerPage extends StatelessWidget {
     String title = Uri.encodeComponent(songEntity.title);
     String coverUrl =
         '${AppURLs.coverFirebaseStorage}$artist%20-%20$title.jpeg?alt=media';
-    // print(coverUrl);
     return coverUrl;
   }
 
   Widget _songCover(BuildContext context) {
-    // String artist = Uri.encodeComponent(songEntity.artist);
-    // String title = Uri.encodeComponent(songEntity.title);
-    // String imageUrl =
-    //     '${AppURLs.coverFirebaseStorage}$artist%20-%20$title.jpeg?alt=media';
-    print(_coverUrl());
-
     return Container(
         height: MediaQuery.of(context).size.height / 2.8,
         decoration: BoxDecoration(
@@ -100,13 +93,8 @@ class SongPlayerPage extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.favorite_outline_outlined,
-              size: 35,
-              color: AppColors.darkGrey,
-            ))
+        MyFavouriteButton(songEntity: songEntity),
+
       ],
     );
   }

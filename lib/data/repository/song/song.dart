@@ -15,4 +15,16 @@ class SongsRepositoryImplementation extends SongsRepository{
     return await serviceLocator<SongFirebaseService>().getNewPlayList();
 
   }
+
+  @override
+  Future<Either> addOrRemoveFavouriteSong(String songId) async {
+    return await serviceLocator<SongFirebaseService>().addOrRemoveFavouriteSong(songId);
+
+  }
+
+  @override
+  Future<bool> isFavourite(String songId) async {
+    return await serviceLocator<SongFirebaseService>().isFavourite(songId);
+
+  }
 }
