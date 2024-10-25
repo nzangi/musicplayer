@@ -1,9 +1,9 @@
 import 'package:music_player/domain/entities/auth/user.dart';
 
 class UserModel {
-  String? fullName;
-  String? email;
-  String? imageURL;
+  String ? fullName;
+  String ? email;
+  String ? imageURL;
 
   UserModel({this.fullName, this.email, this.imageURL});
 
@@ -16,6 +16,6 @@ class UserModel {
 
 extension UserModelExtension on UserModel {
   UserEntity toEntity() {
-    return UserEntity(fullName: fullName!, email: email!);
+    return UserEntity(fullName: fullName, email: email,imageURL: imageURL);
   }
 }

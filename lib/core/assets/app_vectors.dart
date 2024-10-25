@@ -8,5 +8,4 @@ class AppVectors{
   static const String bottomPattern = '${basePath}bottom_pattern$format';
   static const String homeTopCard = '${basePath}home_top_card$format';
   static const String defaultProfileImage = '${basePath}person$format';
-
 }

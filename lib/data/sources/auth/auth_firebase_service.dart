@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:music_player/core/assets/app_images.dart';
 import 'package:music_player/core/assets/app_vectors.dart';
 import 'package:music_player/data/models/auth/create_user_request.dart';
 import 'package:music_player/data/models/auth/signin_user_request.dart';
@@ -39,7 +40,9 @@ class AuthFirebaseServiceImplementation extends AuthFirebaseService{
       var data  = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: request.email, password: request.password);
       FirebaseFirestore.instance.collection('Users').doc(data.user?.uid).set({
         'name': request.fullName,
-        'email': data.user?.email
+        'email': data.user?.email,
+        // 'imageURL': AppImages.defaultProfileImage,
+
       });
 
       return  const Right("Registration was successful");
@@ -59,10 +62,25 @@ class AuthFirebaseServiceImplementation extends AuthFirebaseService{
     try{
       FirebaseAuth firebaseAuth = FirebaseAuth.instance;
       FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-      var user = await firebaseFirestore.collection('Users').doc(firebaseAuth.currentUser?.uid).get();
+      // var user = await firebaseFirestore.collection('Users').doc(firebaseAuth.currentUser?.uid).get();
+
+      var currentUser = firebaseAuth.currentUser;
+      print('Current user UID: ${currentUser?.uid}');
+      if (currentUser == null) {
+        return const Left('No user is currently signed in.');
+      }
+
+      var user = await firebaseFirestore.collection('Users').doc(currentUser.uid).get();
+
+      // print('User document exists: ${user.exists}');
+      // print('User document data: ${user.data()}');
+
+      if (!user.exists || user.data() == null) {
+        return const Left('User data not found.');
+      }
 
       UserModel userModel = UserModel.fromJson(user.data()!);
-      userModel.imageURL = firebaseAuth.currentUser?.photoURL ?? AppVectors.defaultProfileImage;
+      userModel.imageURL = firebaseAuth.currentUser?.photoURL ?? AppImages.defaultProfileImage;
 
       UserEntity userEntity = userModel.toEntity();
       return Right(userEntity);
@@ -70,8 +88,7 @@ class AuthFirebaseServiceImplementation extends AuthFirebaseService{
     }catch(e){
       return const Left('An error Occurred');
     }
-
-
   }
+
 
 }

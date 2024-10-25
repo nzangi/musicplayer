@@ -8,6 +8,7 @@ class SongEntity {
   final bool isFavourite;
   final String songId;
 
+
   SongEntity(
       {required this.title,
       required this.artist,

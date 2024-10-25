@@ -20,9 +20,8 @@ class AuthRepositoryImplementation extends AuthRepository{
   }
 
   @override
-  Future<Either> getUser() {
-    // TODO: implement getUser
-    throw UnimplementedError();
+  Future<Either> getUser() async{
+    return await serviceLocator<AuthFirebaseService>().getUser();
   }
 
 }

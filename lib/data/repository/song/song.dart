@@ -13,7 +13,6 @@ class SongsRepositoryImplementation extends SongsRepository{
   @override
   Future<Either> getNewPlayList() async{
     return await serviceLocator<SongFirebaseService>().getNewPlayList();
-
   }
 
   @override
@@ -26,5 +25,10 @@ class SongsRepositoryImplementation extends SongsRepository{
   Future<bool> isFavourite(String songId) async {
     return await serviceLocator<SongFirebaseService>().isFavourite(songId);
 
+  }
+
+  @override
+  Future<Either> getUserFavouriteSongs() async{
+    return await serviceLocator<SongFirebaseService>().getUserFavouriteSongs();
   }
 }
