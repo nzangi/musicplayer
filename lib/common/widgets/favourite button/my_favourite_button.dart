@@ -8,7 +8,8 @@ import '../../../core/configs/theme/app_colors.dart';
 
 class MyFavouriteButton extends StatelessWidget {
   final SongEntity songEntity;
-  const MyFavouriteButton({required this.songEntity, super.key});
+  final Function ? function;
+  const MyFavouriteButton({required this.songEntity, this.function ,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +19,13 @@ class MyFavouriteButton extends StatelessWidget {
           builder: (context, state) {
         if (state is FavouriteButtonInitialize) {
           return IconButton(
-              onPressed: () {
-                context.read<FavouriteButtonCubit>().favouriteButtonUpdated(songEntity.songId);
+              onPressed: () async {
+                await context.read<FavouriteButtonCubit>().favouriteButtonUpdated(songEntity.songId);
+                if(function != null){
+                  function!();
+                }
               },
+
               icon: Icon(
                 songEntity.isFavourite
                     ? Icons.favorite

@@ -149,6 +149,8 @@ class SongFirebaseServiceImplementation extends SongFirebaseService {
         String songId = element['songId'];
         var song = await firebaseFirestore.collection('Songs').doc(songId).get();
         SongModel songModel = SongModel.fromJson(song.data()!);
+        songModel.isFavourite = true;
+        songModel.songId = songId;
         favouriteSongs.add(
           songModel.toEntity()
         );

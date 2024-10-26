@@ -6,7 +6,7 @@ import 'package:music_player/service_locator.dart';
 class FavouriteButtonCubit extends Cubit<FavouriteButtonState>{
   FavouriteButtonCubit() : super(FavouriteButtonInitialize());
 
-  void favouriteButtonUpdated(String songId) async{
+  Future<void> favouriteButtonUpdated(String songId) async{
     var result = await serviceLocator<AddOrRemoveFavouriteSongUseCase>().call(
       params: songId
     );
